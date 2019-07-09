@@ -1,0 +1,30 @@
+You made it back to camp, with food!
+Player: Matt 
+Food: 15
+You had 0 Kills
+------------------------------------------
+You made it back to camp, with food!
+Player: Matt 
+Food: 17
+You had 1 Kills
+------------------------------------------
+Your camp ate you..pity.
+Player: Matt 
+Food: 0
+You had 0 Kills
+------------------------------------------
+You made it back to camp, with food!
+Player: Matt 
+Food: 8
+You had 1 Kills
+------------------------------------------
+You made it back to camp, with food!
+Player: Matt 
+Food: 17
+You had 2 Kills
+------------------------------------------
+You made it back to camp, with food!
+Player: Matt 
+Food: 1
+You had 0 Kills
+------------------------------------------

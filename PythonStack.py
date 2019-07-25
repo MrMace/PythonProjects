@@ -23,14 +23,19 @@ class Stack:
     def size(self):
         return len(self.stack)
     
+    #Displays list
+    def viewList(self):
+        return self.stack
+    
 myStack = Stack()
 print(myStack.push(5))
 print(myStack.push(6))
 print(myStack.push(9))
 print(myStack.push(5)) #false
-print(myStack.size())
-print(myStack.pop())
-print(myStack.pop())
-print(myStack.pop())
-print(myStack.size())
-print(myStack.pop())
+#print(myStack.size())
+#print(myStack.pop())
+#print(myStack.pop())
+#print(myStack.pop())
+#print(myStack.size())
+#print(myStack.pop())
+print(myStack.viewList())

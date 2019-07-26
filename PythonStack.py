@@ -27,15 +27,12 @@ class Stack:
     def viewList(self):
         return self.stack
     
-myStack = Stack()
-print(myStack.push(5))
-print(myStack.push(6))
-print(myStack.push(9))
-print(myStack.push(5)) #false
-#print(myStack.size())
-#print(myStack.pop())
-#print(myStack.pop())
-#print(myStack.pop())
-#print(myStack.size())
-#print(myStack.pop())
-print(myStack.viewList())
+myStack = Stack() #node for class store. 
+amtNumToPush = int(input("How many things would you like to push? ")) #gets the amount for list
+
+#loops through to collect the users list items. 
+for i in range(amtNumToPush):
+    toPush = input("What do you want to push for the position {} in the list? ".format(i + 1)) #gets the input 
+    myStack.push(toPush)#pushes the input
+    
+print(myStack.viewList()) #prints the list

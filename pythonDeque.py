@@ -35,12 +35,13 @@ class Deque:
     
 dQ = Deque()
 
-dQ.addFront("FrontOne")
-dQ.addFront("SecondFront")
-dQ.addBack("Added Back")
-dQ.addBack("Second Back")
-print(dQ.size())
-print(dQ.viewList())
-print(dQ.isEmpty())
-dQ.addFront("Added")
-print(dQ.viewList())
+amtNumToPush = int(input("How many things would you like to push? ")) #gets the amount for list
+
+#loops through to collect the users list items. 
+for i in range(amtNumToPush):
+    toPush = input("What do you want to push for the position {} in the list? ".format(i + 1)) #gets the input 
+    dQ.addFront(toPush)#pushes the input
+    
+print(dQ.viewList()) #prints the list
+
+

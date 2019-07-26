@@ -30,12 +30,11 @@ class Queue:
         return self.items
             
 myQ = Queue()
-print(myQ.emptyQ())
-myQ.enqueue("Im first in")
-myQ.enqueue("Second in line")
-myQ.enqueue("Im Last")
-myQ.printqueue()
-myQ.dequeue()
-myQ.printqueue()
-print(myQ.emptyQ())
-print(myQ.viewList())
+amtNumToPush = int(input("How many things would you like to push? ")) #gets the amount for list
+
+#loops through to collect the users list items. 
+for i in range(amtNumToPush):
+    toPush = input("What do you want to push for the position {} in the list? ".format(i + 1)) #gets the input 
+    myQ.enqueue(toPush)#pushes the input
+    
+print(myQ.viewList()) #prints the list

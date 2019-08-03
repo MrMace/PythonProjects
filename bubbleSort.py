@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #List given 
 givenList =  [1,2,3,4,5,6,7,8,9,10]
 
@@ -22,3 +23,30 @@ bubbleSort(givenList) #calls our bubble sort function/ passes list
 
 #prints out to our console the list. 
 print("The sorted list is: {} ".format(givenList))
+=======
+#List given 
+givenList =  [1,2,3,4,5,6,7,8,9,10]
+
+
+'''
+This is the bubble sort algorithm that keeps exchangeing the adjacent elements if
+they are in the wrong order. This is the simplist sorting algorithm.
+'''
+def bubbleSort(givenList): #bubbleSort Function
+    
+    listLen = len(givenList) #gets length of the list
+    
+    for i in range(listLen): #Goes through all the list elements
+        
+        #Goes through the list, swaps the element if the next one
+        #is greater then moves to the next element.
+        for j in range(0, listLen - i - 1):
+            
+            if givenList[j] > givenList[j + 1]:
+                givenList[j], givenList[j + 1] = givenList[j + 1], givenList[j]
+                
+bubbleSort(givenList) #calls our bubble sort function/ passes list
+
+#prints out to our console the list. 
+print("The sorted list is: {} ".format(givenList))
+>>>>>>> ee95c9602ad586e4f878df49fe1fe6e169e9613b

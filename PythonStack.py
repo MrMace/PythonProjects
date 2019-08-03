@@ -15,7 +15,7 @@ class Stack:
     #Remove last element from stack
     def pop(self):
         if len(self.stack) <=0:
-            return("Stack Empty!")
+            return("Empty!")
     
         return self.stack.pop()
 

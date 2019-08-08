@@ -1,5 +1,5 @@
 #ListGiven 
-givenList =  [1,2,3,4,5,6,7,8,9,10]
+givenList =  [1,2,5,4,3,6,7,8,9,10]
 
 '''
 This is the Selection sorting algorithm that sorts the list by going through it and finding the smallest
@@ -21,7 +21,7 @@ def selectionSort(givenList):
         
         for j in range( i + 1, listLen):
             
-            if givenList[minIndex] > givenList[j]:
+            if givenList[minIndex] < givenList[j]:
                 minIndex = j
          
          #swaps out the smallest element with the first element. 

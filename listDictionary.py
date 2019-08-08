@@ -2,7 +2,7 @@
 '''
 This program uses a list to search a dictionary.
 '''
-theList = ["dog", "cat", "monkey", "snake", "dragon", "mouse"]  #The List
+theList = ["dog", "cat", "monkey", "snake", "dragon", "mouse","Elephant"]  #The List
 #The Dictionary
 theDictionary = {"dog":'brown', "cat":'orange', "mouse":"grey","monkey":'brown',"snake":'black',"dragon":'red'} 
 

@@ -1,5 +1,5 @@
 #List
-givenList =  [1,2,3,4,5,6,7,8,9,10]
+givenList =  [1,2,3,6,5,4,7,8,9,10]
 
 '''
 This is the bubble sort algorithm that keeps exchangeing the adjacent elements if
@@ -15,7 +15,7 @@ def bubbleSort(givenList): #bubbleSort Function
         #is greater then moves to the next element.
         for j in range(0, listLen - i - 1):
             
-            if givenList[j] > givenList[j + 1]:
+            if givenList[j] < givenList[j + 1]:
                 givenList[j], givenList[j + 1] = givenList[j + 1], givenList[j]
                 
 bubbleSort(givenList) #calls our bubble sort function/ passes list

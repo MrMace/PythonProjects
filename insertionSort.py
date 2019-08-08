@@ -2,7 +2,9 @@
 givenList =  [1,2,3,5,4,6,7,8,9,10]
 
 '''
-This is the Insertion sorting algorithm 
+This is the Insertion sorting algorithm. Starts from 1 index in the list not 0 We compare our key var with the
+elements before it if key is less than first element we instert the key element before first. If key is greater than first we inster after first element.
+We make a third element and compare the element to the left and insert it in the right position. Reapeat until ordered.
 '''
 
 def insertionSort(givenList): #Function

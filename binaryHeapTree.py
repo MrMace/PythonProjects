@@ -14,13 +14,15 @@ class BinaryHeap:
                 self.heapList[i // 2] = self.heapList[i]
                 self.heapList[i] = tmp
             i = i // 2
+            return print(self.heapList)
             
       #Adds an item to the list, using append.       
     def insert(self,k):
         self.heapList.append(k)
         self.currentSize = self.currentSize + 1
         self.percUp(self.currentSize)
-        return self.heapList
+        
+        
       
     #Percolates the new node down to its proper position. Swap the root with smallest child less than root.
     def percDown(self, i):
@@ -54,10 +56,6 @@ class BinaryHeap:
     
     #build the new heap from a list of items.
     def buildHeap(self,alist):
-        print(alist)
-        if alist == True:
-            self.heapList.append[alist]
-        else:
             i = len(alist) // 2
             self.currentSize = len(alist)
             self.heapList = [0] + alist[:]

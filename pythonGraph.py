@@ -36,4 +36,3 @@ addEdge(graph,'d','c')
 addEdge(graph,'e','c')
 
 print(generate_edges(graph))
-5 mins

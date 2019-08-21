@@ -5,9 +5,9 @@ import time
 import sys
 from collections import deque
 
-wn = turtle.Screen()               # define the turtle screen
-wn.bgcolor("black")                # set the background colour
-wn.setup(1300,700)                  # setup the dimensions of the working window
+win = turtle.Screen()               # define the turtle screen
+win.bgcolor("black")                # set the background colour
+win.setup(1300,700)                  # setup the dimensions of the working window
 
 
 # this is the class for the Maze
@@ -28,6 +28,7 @@ class Green(turtle.Turtle):
         self.color("green")
         self.penup()
         self.speed(0)
+        self.hideturtle()
 
 class Blue(turtle.Turtle):
     def __init__(self):
@@ -36,6 +37,7 @@ class Blue(turtle.Turtle):
         self.color("blue")
         self.penup()
         self.speed(0)
+        self.hideturtle()
 
 
 # this is the class for the yellow or turtle
@@ -46,6 +48,7 @@ class Red(turtle.Turtle):
         self.color("red")
         self.penup()
         self.speed(0)
+        self.hideturtle()
 
 class Yellow(turtle.Turtle):
     def __init__(self):
@@ -54,38 +57,39 @@ class Yellow(turtle.Turtle):
         self.color("yellow")
         self.penup()
         self.speed(0)
+        self.hideturtle()
 
 
 grid = [
 "+++++++s+++++++++++++++++++++++++++++++++++++++++++",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+ e                                               +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
-"+                                                 +",
+"+++++++ +++++++++++++++++++++++++++++++++++ +++++++",
+"+++++++    +++++++++++++++++++++++++++++    +++++++",
+"+++++++      +++++++++++++++++++++++++      +++++++",
+"+++++++       +++++++++++++++++++++++       +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
+"+++++++             ++++++++++++            +++++++",
+"+++++++               ++++++++              +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
+"+++++++         +++++            +++++      +++++++",
+"+++++++          +++              +++       +++++++",
+"+++++++                  + +                +++++++",
+"+++++++                   +                 +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
+"+++++++       ++++++++++++++++++++++++      +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
+"+++++++                                     e++++++",
+"+++++++                                     +++++++",
+"+++++++                                     +++++++",
 "+++++++++++++++++++++++++++++++++++++++++++++++++++",
  ]
 
 
-def setup_maze(grid):                          # define a function called setup_maze
+def mazeSetup(grid):                          # define a function called mazeSetup
     global start_x, start_y, end_x, end_y      # set up global variables for start and end locations
     for y in range(len(grid)):                 # read in the grid line by line
         for x in range(len(grid[y])):          # read each cell in the line
@@ -111,72 +115,75 @@ def setup_maze(grid):                          # define a function called setup_
             if character == "s":
                 start_x, start_y = screen_x, screen_y  # assign start locations variables to start_x and start_y
                 red.goto(screen_x, screen_y)
+                
 
 
-def endProgram():
-    wn.exitonclick()
+def endProgram(win):
+    win.exitonclick()
     sys.exit()
 
 def search(x,y):
-    frontier.append((x, y))
+    dequeF.append((x, y))
     solution[x,y] = x,y
 
-    while len(frontier) > 0:          # exit while loop when frontier queue equals zero
+    while len(dequeF) > 0:          # exit while loop when dequeF queue equals zero
         time.sleep(0)
-        x, y = frontier.popleft()     # pop next entry in the frontier queue an assign to x and y location
+        x, y = dequeF.popleft()     # pop next entry in the dequeF queue an assign to x and y location
 
         if(x - 24, y) in path and (x - 24, y) not in visited:  # check the cell on the left
             cell = (x - 24, y)
             solution[cell] = x, y    # backtracking routine [cell] is the previous cell. x, y is the current cell  
-            frontier.append(cell)   # add cell to frontier list
+            dequeF.append(cell)   # add cell to dequeF list
             visited.add((x-24, y))  # add cell to visited list
 
-        if (x, y - 24) in path and (x, y - 24) not in visited:  # check the cell down
+        if (x, y - 24) in path and (x, y - 24) not in visited:  # check the cell dowin
             cell = (x, y - 24)
             solution[cell] = x, y          
-            frontier.append(cell)
+            dequeF.append(cell)
             visited.add((x, y - 24))
-            #print(solution)
+            
 
         if(x + 24, y) in path and (x + 24, y) not in visited:   # check the cell on the  right
             cell = (x + 24, y)
             solution[cell] = x, y          
-            frontier.append(cell)
+            dequeF.append(cell)
             visited.add((x +24, y))
 
         if(x, y + 24) in path and (x, y + 24) not in visited:  # check the cell up
             cell = (x, y + 24)
             solution[cell] = x, y
-            frontier.append(cell)
+            dequeF.append(cell)
             visited.add((x, y + 24))
         green.goto(x,y)
         green.stamp()
 
 
 def backRoute(x, y):
-    yellow.goto(x, y)
-    yellow.stamp()
+    red.goto(x, y)
+    red.stamp()
     while (x, y) != (start_x, start_y):    # stop loop when current cells == start cell
-        yellow.goto(solution[x, y])        # move the yellow sprite to the key value of solution ()
-        yellow.stamp()
+        red.goto(solution[x, y])        # move the yellow sprite to the key value of solution ()
+        red.stamp()
         x, y = solution[x, y]               # "key value" now becomes the new key
 
-# set up classes
+# setup lists
+walls = []
+path = []
+visited = set()
+dequeF = deque()
+solution = {}                           # solution dictionary
+
+
+        # class setup
 maze = Maze()
 red = Red()
 blue = Blue()
 green = Green()
 yellow = Yellow()
 
-# setup lists
-walls = []
-path = []
-visited = set()
-frontier = deque()
-solution = {}                           # solution dictionary
-
-# main program starts here ####
-setup_maze(grid)
+mazeSetup(grid)
 search(start_x,start_y)
 backRoute(end_x, end_y)
-wn.exitonclick()
+endProgram(win)
+    
+main()

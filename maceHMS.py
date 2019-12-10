@@ -12,25 +12,29 @@ class User():
         return self.role;
     
 class FrontDesk(User):
-    pass
+    
+    
+    def guestCheckIn(self):
+        pass
+    
+    def guestCheckOut(self):
+        pass
+    
+    
 class HouseKeeping(User):
     pass
 class Maintenace(User):
     pass
 
 class Reports(User):
-    
-    def __init__(self,role):
-        
-        self.role = role;
-    
+   
     def getReport(self):
         
         if(User.getRole(self) == "Front Desk"):
             return "GSR Report";
         
         
-    
+
     
     
 def roles():
@@ -55,14 +59,28 @@ def roles():
        
       
        
-    
+rooms = ["101", "102", "105", "202" , "203", "204", "302", "303", "304"]
+print(rooms)
+checkedInRoom = rooms[2];
+rooms.remove(checkedInRoom);
+print(rooms)
+dirtyRooms = ["none"];
+print(dirtyRooms)
+dirtyRooms[0]=checkedInRoom;
+print(dirtyRooms)
 
+outOfOrderRooms = [];
+print(rooms)
 
 def main():
     
     employee = User(input("What is your name? "),(input("What is your password? ")), roles())
     userRole = employee.getRole();
-    print(Reports.getReport(userRole));
+    print(Reports.getReport(employee));
     
     
 main()
+    
+    
+    
+    

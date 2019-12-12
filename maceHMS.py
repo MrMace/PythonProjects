@@ -11,29 +11,16 @@ class User():
     def getRole(self):
         return self.role;
     
-class FrontDesk(User):
-       
-    def guestCheckIn(self):
-        pass
+class Reports(User):
     
-    def guestCheckOut(self):
-        pass
-       
-class HouseKeeping(User):
-    pass
-class Maintenace(User):
-    pass
-
-class Rooms():
-    
-    def __init__(self, roomList, dirtyRooms, outOfOrderRooms, chosenRoom):
-        self.cleanRooms = roomList;
+    def __init__(self, roomsList, dirtyRooms, outOfOrderRooms, chosenRoom):
+        self.roomsList = roomsList;
         self.dirtyRooms = dirtyRooms;
         self.outOfOrder = outOfOrderRooms;
         self.roomNum = chosenRoom;
         
-    def getRoomList(self):
-        return self.cleanRooms;
+    def getRoomsList(self):
+        return self.roomsList;
         
     def getDirtyRooms(self):
         return self.dirtyRooms;
@@ -45,11 +32,9 @@ class Rooms():
         return self.roomNum;
     
     def setRoomDirty(self):
-        self.removeRoom()
         self.dirtyRooms.append(self.roomNum);
         
     def setRoomOOO(self):
-        self.removeRoom()
         self.outOfOrder.append(self.roomNum);
         
     def removeRoom(self):
@@ -64,20 +49,79 @@ class Rooms():
             print("In Out of Order");
         else:
             print("Something went wrong");
-                   
-class Reports(Rooms):
        
-    def getReport(self):
+def getReport(userRole,roomsObj):
         
-        if(User.getRole(self) == "Front Desk"):
-            return "GSR Report";
-        elif(User.getRole(self) == "House Keeping"):
-            return "HouseKeeping Reports";
-        elif(User.getRole(self) == "Maintenace"):
-             return "Maintainece Reports";
-        else:
-             return "Something went wrong";
-              
+    if(userRole == "Front Desk"):
+        frontDesk(roomsObj);   
+    elif(userRole == "House Keeping"):
+        houseKeeping(roomsObj);
+    elif(userRole == "Maintenace"):
+        maintenace(roomsObj);
+    else:
+        return "Something went wrong";
+                      
+def frontDesk(roomObj):
+    while True:
+        print("--------------------------")
+        
+        print("Check guest in enter 1. ")
+        print("Check guest out enter 2. ")
+        print("Set Room Out of Order enter 3. ")
+        print("Set Room Dirty enter 4. ")
+        print("In house list enter 5. ")
+        print("Exit enter 6")
+        choice = input("What would you like to do? ")
+        
+        if(choice == "1"):
+            print("Check in ");
+        elif(choice == "2"):
+            print("");
+        elif(choice == "3"):
+            print("");
+        elif(choice == "4"):
+            print(roomObj.getDirtyRooms());
+            input("enter enter to continue: ");
+        elif(choice == "5"):
+            print("");
+        elif(choice == "6"):
+            break;
+        
+def houseKeeping(roomObj):
+    while True:
+        print("--------------------------")
+        
+        print("Print dirty room list enter 1. ")
+        print("Set room to clean enter 2. ")
+        print("Exit enter 3. ")
+        choice = input("What would you like to do? ")
+        
+        if(choice == "1"):
+            print(roomObj.getDirtyRooms());
+            input("enter enter to continue: ");
+        elif(choice == "2"):
+            print("Rooms out of order: {}".format(roomObj.getDirtyRooms()));
+            roomToOrder = input("")
+            print("");
+        elif(choice == "3"):
+            break;
+        
+def maintenace(roomObj):
+    while True:
+        print("--------------------------")
+        
+        print("Print out of order room list enter 1. ")
+        print("Set room back to order enter 2. ")
+        print("Exit enter 3. ")
+        choice = input("What would you like to do? ")
+        
+        if(choice == "1"):
+            print("");
+        elif(choice == "2"):
+            print("");
+        elif(choice == "3"):
+            break;
+                         
 def roles():
     print("______________________ ");
     print("Enter 1 for front desk. ");
@@ -98,31 +142,29 @@ def roles():
         print("Invalid input try again")
         roles();
 
-def getRoomNum(rooms):
+def getRoomNum(x):
 
     chosenRoom = input("Which room to check guest into? ");
-    if(chosenRoom in rooms):
+    if(chosenRoom in x):
         return chosenRoom;
     else: 
         print("Room Number Not Available!")
         getRoomNum(rooms);
-       
-rooms = ["101", "102", "105", "202" , "203", "204", "302", "303", "304"]
-dirtyRooms = [];
-outOfOrderRooms = [];
-print(rooms);
-chosenRoom = getRoomNum(rooms)
-roomsObj = Rooms(rooms,dirtyRooms,outOfOrderRooms,chosenRoom);
-print(roomsObj.getRoomNum())
-
-def login():
-    employee = User(input("Username: "),(input("Password: ")), roles())
-    userRole = employee.getRole();
-    print(Reports.getReport(employee));
+ 
 
 def main():
+
+    roomsList = ["101", "102", "105", "202" , "203", "204", "302", "303", "304"]
+    dirtyRooms = [];
+    outOfOrderRooms = [];
+    chosenRoom = "";
+    roomsObj = Reports(roomsList,dirtyRooms,outOfOrderRooms,chosenRoom);
+    employee = User(input("Username: "),(input("Password: ")), roles())
+    userRole = employee.getRole();
+    print(userRole);
+    getReport(userRole,roomsObj);
     
-    login();
+    
     
 main()
     

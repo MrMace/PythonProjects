@@ -101,8 +101,8 @@ def houseKeeping(roomObj):
             input("enter enter to continue: ");
         elif(choice == "2"):
             print("Rooms out of order: {}".format(roomObj.getDirtyRooms()));
-            roomToOrder = input("")
-            print("");
+            roomCleaned = input("Which of these rooms you want to mark as clean? ")
+            input("");
         elif(choice == "3"):
             break;
         
@@ -116,6 +116,8 @@ def maintenace(roomObj):
         choice = input("What would you like to do? ")
         
         if(choice == "1"):
+            print("Rooms out of order: {}".format(roomObj.getDirtyRooms()));
+            roomToOrder = input("")
             print("");
         elif(choice == "2"):
             print("");
